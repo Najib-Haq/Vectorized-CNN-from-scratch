@@ -7,8 +7,8 @@ import pickle
 def get_near_duplicate_removed_train():
     # https://www.kaggle.com/code/nexh98/cse-472-offline4-make-dataset/data?scriptVersionId=118126349
     # This is the dataset with near duplicate images removed using CNN embeddings
-    df1 = pd.read_csv("nd_removed_train_a.csv")
-    df3 = pd.read_csv("nd_removed_train_c.csv")
+    df1 = pd.read_csv("resources/nd_removed_train_a.csv")
+    df3 = pd.read_csv("resources/nd_removed_train_c.csv")
 
     df1 = df1[df1.included == True].reset_index(drop=True)
     df3 = df3[df3.included == True].reset_index(drop=True)

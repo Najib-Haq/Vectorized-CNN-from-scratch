@@ -1,1 +1,4 @@
+__pycache__/
+*.pyc
 resources/numta
+output

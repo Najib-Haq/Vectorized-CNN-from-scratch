@@ -1,6 +1,6 @@
 epochs: 30 # number of epochs to train
 num_class: 10 
-data_dir: '../numta'
+data_dir: 'resources/numta'
 output_dir: 'output'
 train_batch: 128
 valid_batch: 128
@@ -14,18 +14,18 @@ model: # model3 configuration
   - [ReLU, []] 
   - [MaxPool2D, [2, 2]]
   - [Conv2D, [32, 32, 3, 1, 1]] 
-  - [ReLU, []] # 26
-  - [MaxPool2D, [2, 2]] # kernel_size, stride=1 -> 13
-  - [Flatten, []] # 64 * 5 * 5
-  - [Linear, [1024]] # 
-  - [ReLU, []] # 26
-  - [Linear, [512]] # 
-  - [ReLU, []] # 26
-  - [Linear, [10]] #  
+  - [ReLU, []]
+  - [MaxPool2D, [2, 2]] # kernel_size, stride
+  - [Flatten, []] 
+  - [Linear, [1024]]  
+  - [ReLU, []] 
+  - [Linear, [512]] 
+  - [ReLU, []] 
+  - [Linear, [10]]  
   - [Softmax, []]
-checkpoint_path: "1705044_model.pickle" # checkpoint to load weights from
+checkpoint_path: "resources/1705044_model.npy" # checkpoint to load weights from
 resume: false # whether to continue training from checkpoint
-gt_csv: false #"../numta/training-d.csv" # ground truth csv for test.py
+gt_csv: false #"resources/numta/training-d.csv" # ground truth csv for test.py
 augment:
   img_shape: [48, 48]
   use_bbox: true # crop to bbox

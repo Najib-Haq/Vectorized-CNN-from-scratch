@@ -46,8 +46,7 @@ class MaxPool2D(Base):
         return output
 
     def fully_vectorized_backward(self, dL_dy):
-        # not that much increase :/
-        # https://stackoverflow.com/questions/61954727/max-pooling-backpropagation-using-numpy
+        # Resource: https://stackoverflow.com/questions/61954727/max-pooling-backpropagation-using-numpy
         stride = self.params["stride"]
         N, C, H, W = self.cache['X_shape']
         dL_dy_reshaped_to_original_window = dL_dy.repeat(stride, axis=-2).repeat(stride, axis=-1)
@@ -67,7 +66,7 @@ class MaxPool2D(Base):
         # get cached strided_X
         strided_X = self.cache['strided_X']
 
-        reshaped_strided_X = strided_X.reshape((N, C, H_out, W_out, -1)) # need to do this as cannot get max from multiple axis
+        reshaped_strided_X = strided_X.reshape((N, C, H_out, W_out, -1)) # need to do this as cannot get max from multiple axis -> or not maybe was wrong but this works anyway
         argmaxes = reshaped_strided_X.argmax(axis=-1)
         a1, a2, a3, a4 = np.indices((N, C, H_out, W_out)) # indices of axies
         argmaxes_indices = (a1, a2, a3, a4, argmaxes)
@@ -79,7 +78,6 @@ class MaxPool2D(Base):
 
         # reshape to original shape
         strided_X_maxes = strided_X_maxes.reshape(strided_X.shape)
-        # print(strided_X_maxes)
 
         dL_dX = np.zeros(self.cache['X_shape'])
         

@@ -5,3 +5,4 @@ matplotlib
 os
 math
 tqdm
+pytest

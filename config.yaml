@@ -1,0 +1,91 @@
+epochs: 30 # number of epochs to train
+num_class: 10 
+data_dir: '../numta'
+output_dir: 'output'
+train_batch: 128
+valid_batch: 128
+lr: 0.01
+debug: false
+model: # model3 configuration
+  - [Conv2D, [3, 16, 3, 1, 1]] # in_channels, out_channels, kernel_size, stride=1, padding=0, bias=True
+  - [ReLU, []] 
+  - [MaxPool2D, [2, 2]]
+  - [Conv2D, [16, 32, 3, 1, 1]] 
+  - [ReLU, []] 
+  - [MaxPool2D, [2, 2]]
+  - [Conv2D, [32, 32, 3, 1, 1]] 
+  - [ReLU, []] # 26
+  - [MaxPool2D, [2, 2]] # kernel_size, stride=1 -> 13
+  - [Flatten, []] # 64 * 5 * 5
+  - [Linear, [1024]] # 
+  - [ReLU, []] # 26
+  - [Linear, [512]] # 
+  - [ReLU, []] # 26
+  - [Linear, [10]] #  
+  - [Softmax, []]
+checkpoint_path: "1705044_model.pickle" # checkpoint to load weights from
+resume: false # whether to continue training from checkpoint
+gt_csv: false #"../numta/training-d.csv" # ground truth csv for test.py
+augment:
+  img_shape: [48, 48]
+  use_bbox: true # crop to bbox
+  reverse: true # inverse image
+  aug: false # use rotate, blur
+  dilation: true # use dilation op
+  opening: false # use opening op
+  mixup: 0.0 # probability of using mixup
+  contour_cutout_prob: 0.5 # probability of using contour cutout
+  contour_cutout_number: 5 # highest number of contour cutouts from an image
+  cache: true # whether to cache the dataset first -> saves time in training
+lr_scheduler:
+  factor: 0.7
+  patience: 2
+use_wandb: false
+wandb:
+  project: "cse472_cnn_scratch"
+  entity: "nexh98" # anonymous
+notebook: ''
+name: 'Baseline'
+comment: 'Model-48x48'
+exp: 'Baseline'
+
+
+# model2 configuration
+# model
+#   - [Conv2D, [3, 6, 5, 1, 0]] # in_channels, out_channels, kernel_size, stride=1, padding=0, bias=True
+#   - [ReLU, []] 
+#   - [MaxPool2D, [2, 2]]
+#   - [Conv2D, [6, 16, 5, 1, 0]] 
+#   - [ReLU, []] 
+#   - [MaxPool2D, [2, 2]]
+#   - [Conv2D, [16, 32, 3, 1, 1]] 
+#   - [ReLU, []] 
+#   - [MaxPool2D, [2, 2]]
+#   - [Flatten, []] # 64 * 5 * 5
+#   - [Linear, [120]] # 
+#   - [ReLU, []] # 26
+#   - [Linear, [84]] # 
+#   - [ReLU, []] # 26
+#   - [Linear, [10]] #  
+#   - [Softmax, []]
+
+
+
+# model3
+# model:
+#   - [Conv2D, [3, 16, 3, 1, 1]] # in_channels, out_channels, kernel_size, stride=1, padding=0, bias=True
+#   - [ReLU, []] 
+#   - [MaxPool2D, [2, 2]]
+#   - [Conv2D, [16, 32, 3, 1, 1]] 
+#   - [ReLU, []] 
+#   - [MaxPool2D, [2, 2]]
+#   - [Conv2D, [32, 32, 3, 1, 1]] 
+#   - [ReLU, []] # 26
+#   - [MaxPool2D, [2, 2]] # kernel_size, stride=1 -> 13
+#   - [Flatten, []] # 64 * 5 * 5
+#   - [Linear, [1024]] # 
+#   - [ReLU, []] # 26
+#   - [Linear, [512]] # 
+#   - [ReLU, []] # 26
+#   - [Linear, [10]] #  
+#   - [Softmax, []]

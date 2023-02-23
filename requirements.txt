@@ -1,0 +1,7 @@
+numpy
+scipy
+cv2
+matplotlib
+os
+math
+tqdm

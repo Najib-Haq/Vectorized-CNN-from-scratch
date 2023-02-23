@@ -46,4 +46,4 @@ Validation | Testing (training-d) | Testing (In evaluation)
 0.9769 | 0.98133 | 0.9783
 
 ## Resources
-Additionally [Pseudo Labels1](resources/nd_removed_train_a.csv), [Pseudo Labels2](resources/nd_removed_train_c.csv), [Pretrained Checkpoint](resources/1705044_model.npy) and [Report](resources/1705044_report.pdf) are given under the `resources` folder.
+Additionally [Pseudo Labels1](resources/nd_removed_train_a.csv), [Pseudo Labels2](resources/nd_removed_train_c.csv), [Pretrained Checkpoint](resources/1705044_model.npy) and [Report](resources/1705044_report.pdf) are given under the `resources` folder. The notebook which trained the pretrained checkpoint can be found [here](https://www.kaggle.com/nexh98/cse-472-offline4-bbox-model3-pseudo-p2).
